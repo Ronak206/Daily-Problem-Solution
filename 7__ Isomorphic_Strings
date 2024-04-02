@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) 
+    {
+        if(s.size() != t.size())
+            return false;
+
+        int size = s.size();
+        unordered_map<char, char> m1, m2;
+       
+       for(int p = 0 ; p < size ; p++)
+       {
+            if(m1[s[p]] && m1[s[p]]!=t[p] || m2[t[p]] && m2[t[p]]!=s[p])
+                return false;
+
+            //this is important
+            //bcz if you do this then check upper condition.
+            m1[s[p]] = t[p];
+            m2[t[p]] = s[p];
+       }
+       return true;
+    }
+    //:)
+};
